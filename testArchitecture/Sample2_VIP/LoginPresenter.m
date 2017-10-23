@@ -10,12 +10,12 @@
 
 @implementation LoginPresenter
 
-@synthesize interactorInput;
-@synthesize loginViewOutput;
+@synthesize loginInteractor;
+@synthesize loginView;
 
 -(void)resetViewInfo
 {
-   [loginViewOutput showErrorTips:@""];
+   [loginView showErrorTips:@""];
 }
 
 -(void)userLogin:(NSString *)username andPassword:(NSString *)password
@@ -23,11 +23,11 @@
     //TODO:1.check。2.调用interactor
     if ([self checkUserInput:username andPassword:password])
     {
-        [interactorInput userLogin:username andPassword:password];
+        [loginInteractor userLogin:username andPassword:password];
     }
     else
     {
-         [loginViewOutput showErrorTips:@"username or password is nil!!!"];
+         [loginView showErrorTips:@"username or password is nil!!!"];
     }
 }
 
@@ -35,11 +35,12 @@
 
 - (void)loginSuceess
 {
-    [loginViewOutput skipToMainPage:@"Skip to main page"];
+    //注：按照Viper的思想，可以在这里实现Router， 进行调转
+    [loginView skipToMainPage:@"Main page"];
 }
 - (void)loginFail:(NSString *)msg;
 {
-    [loginViewOutput showErrorTips:[NSString stringWithFormat:@"login failed:%@",msg]];
+    [loginView showErrorTips:[NSString stringWithFormat:@"login failed:%@",msg]];
 }
 
 #pragma mark -- private method

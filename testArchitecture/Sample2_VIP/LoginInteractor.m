@@ -10,17 +10,17 @@
 
 @implementation LoginInteractor
 
-@synthesize output;
+@synthesize loginPresenter;
 
 -(void)userLogin:(NSString *)username andPassword:(NSString *)password
 {
     if (username.length > 5 && password.length > 5)
     {
-        [output loginSuceess];
+        [loginPresenter loginSuceess];
     }
     else
     {
-        [output loginFail:@"usernamge or password error!!!"];
+        [loginPresenter loginFail:@"usernamge or password error!!!"];
     }
 }
 

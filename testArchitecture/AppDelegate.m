@@ -31,9 +31,9 @@
     LoginView *ctrl = [[LoginView alloc] init];
 
     ctrl.presenter = presenter;
-    presenter.interactorInput = interactor;
-    presenter.loginViewOutput = ctrl;
-    interactor.output = presenter;
+    presenter.loginInteractor = interactor;
+    presenter.loginView = ctrl;
+    interactor.loginPresenter = presenter;
 
     self.window.rootViewController = ctrl;
     

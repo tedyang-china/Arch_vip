@@ -22,7 +22,7 @@
     [presenter resetViewInfo];
 }
 
-- (IBAction)onclick:(id)sender {
+- (IBAction)onLoginClick:(id)sender {
     NSLog(@"on click .... ");
     [presenter userLogin:self.usernameTf.text andPassword:self.passwordTf.text];
 }
@@ -37,9 +37,9 @@
     self.passwordTf.text = @"";
 }
 
-- (void)skipToMainPage:(NSString *)router
+- (void)skipToMainPage:(NSString *)msg
 {
-    [[[UIAlertView alloc] initWithTitle:nil message:@"Next Page" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    [[[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
 }
 
 

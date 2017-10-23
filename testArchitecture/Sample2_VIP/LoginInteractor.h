@@ -10,6 +10,6 @@
 
 @interface LoginInteractor : NSObject <LoginInteractorInput>
 
-@property(nonatomic, strong) id<LoginInteractorOutput> output;
+@property(nonatomic, strong) id<LoginInteractorOutput> loginPresenter;
 
 @end

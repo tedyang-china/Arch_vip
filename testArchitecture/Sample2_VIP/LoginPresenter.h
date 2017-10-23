@@ -11,8 +11,8 @@
 
 @interface LoginPresenter : NSObject <LoginInteractorOutput>
 
-@property(nonatomic, strong) id<LoginInteractorInput> interactorInput;
-@property(nonatomic, weak) id<LoginPresenterOutput> loginViewOutput;
+@property(nonatomic, strong) id<LoginInteractorInput> loginInteractor;
+@property(nonatomic, weak) id<LoginPresenterOutput> loginView;
 
 -(void)resetViewInfo;
 -(void)userLogin:(NSString *)username andPassword:(NSString *)password;

@@ -29,7 +29,7 @@
 
 @required
 - (void)showErrorTips:(NSString *)tips;
-- (void)skipToMainPage:(NSString *)router;
+- (void)skipToMainPage:(NSString *)msg;
 
 @end
 
