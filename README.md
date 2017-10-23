@@ -6,11 +6,15 @@ Arch_vip是对于viper架构的的简单实践，这里是一个模拟登陆的�
 
 ![VIPER架构图](VIPER_ori_arch.png)
 
-V：View视图，用户界面显示以及用户事件的收集和转发，并非是UIView及其子类，通常包含但不限于UIView、UIViewController。
-I：Interactor层，进行核心业务逻辑的处理，以User Case的形式请求数据以及完成相应的业务逻辑。
-P:Presenter展示层，主要处理用户事件，从Interactor层获取原始数据，然后转换成界面逻辑数据以便View层进行显示。另外，路由器Router一般是在Presenter中，以进行路由的操作。
-E:Entity层，最纯粹的实体对象，供Interactor使用，不包含任何业务逻辑。
-R:Router路由器，进行视图的跳转，决定了以何种顺序进行哪个界面的显示。注意，这里的Router对象是绑定注入的方式，不能设计成直接跳转。
+- V：View视图，用户界面显示以及用户事件的收集和转发，并非是UIView及其子类，通常包含但不限于UIView、UIViewController。
+
+- I：Interactor层，进行核心业务逻辑的处理，以User Case的形式请求数据以及完成相应的业务逻辑。
+
+- P:Presenter展示层，主要处理用户事件，从Interactor层获取原始数据，然后转换成界面逻辑数据以便View层进行显示。另外，路由器Router一般是在Presenter中，以进行路由的操作。
+
+- E:Entity层，最纯粹的实体对象，供Interactor使用，不包含任何业务逻辑。
+
+- R:Router路由器，进行视图的跳转，决定了以何种顺序进行哪个界面的显示。注意，这里的Router对象是绑定注入的方式，不能设计成直接跳转。
 
 
 # URL类图
