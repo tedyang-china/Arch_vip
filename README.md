@@ -26,4 +26,4 @@ Arch_vip是对于viper架构的的简单实践，这里是一个模拟登陆的�
 
 说明一下，demo里面并没有实现Router跳转，只是进行Alert弹框，所以在UIView里面处理的，实现了Router的情况，在LoginPresenter的loginsuccess方法里面调router进行跳转即可。</br>
 
-另外，View、Interactor、Presenter进行交互时，进行的是双向数据流转，因此都通过Protocol协议去进行解藕，使之层与层之间依赖于抽象。</br>
+另外，View、Interactor、Presenter进行交互时，进行的是双向数据流转，因此尽量需要通过Protocol协议去进行解藕，使之层与层之间依赖于抽象。</br>
