@@ -15,9 +15,9 @@
 
 
 # Arch_vip
-Arch_vip是对于viper架构的的简单实践，这里是一个模拟登陆的小例子，目前只实现了viper三层结构：View、Interactor、Presenter，只便快速理解VIP分层结构的概念。要想了解 Jeff Gilbert和Conrad Stoll完整的VIPER的架构理念，请参看https://www.objc.io/issues/13-architecture/viper/
+Arch_vip是对于viper架构的的简单实践，这里是一个模拟登陆的小例子，目前只实现了viper三层结构：View、Interactor、Presenter，这样更能快速理解VIP分层结构的概念。要想了解 Jeff Gilbert和Conrad Stoll完整的VIPER的架构理念，请参看https://www.objc.io/issues/13-architecture/viper/
 
-# URL类图
+## URL类图
 以下是demo的整体UML类图设计：
 ![URL类图](VIPER_vip_Login.png)
 
@@ -27,3 +27,29 @@ Arch_vip是对于viper架构的的简单实践，这里是一个模拟登陆的�
 说明一下，demo里面并没有实现Router跳转，只是进行Alert弹框，所以在UIView里面处理的，实现了Router的情况，在LoginPresenter的loginsuccess方法里面调router进行跳转即可。</br>
 
 另外，View、Interactor、Presenter进行交互时，进行的是双向数据流转，因此尽量需要通过Protocol协议去进行解藕，使之层与层之间依赖于抽象。</br>
+
+## 总结
+1. 架构设计一定要结合自己实际的业务场景来进行设计，其过程往往是学习新架构--->套用--->解决冲突--->再设计。
+2. 所谓的分层，其实都是抽象的分层，比如View层并不能简单理解为就是View+UIController！具体每一层的抽象程度需要根据业务的大小以及复杂来确定。
+3. 关于Interactor，Interactor是基于application分层的user case，Interactor业务代码的纯粹性，决定着复用、版本移植以及多平台使用的难易程度。
+4. 对presenter，处理UI界面的事件和完成UI数据源的转换给界面显示或者完成界面跳转。presenter是view和interactor的桥，一般情况下是不允许view和interactor直接进行交流的。
+<br>
+另外，在真正的项目实战中，我们需要考虑更多的问题，这里先抛个影子，下一个demo将会进行实现：
+
+1. VIPER核心接口抽象，VIPER的分层需要定义接口protocol来具体抽象每一个层，来建立一套VIPER架构体系，完成每一层的特定功能、规约数据流向，以达到项目中对开发人员的约束。
+2. VIPER的层与层之间的访问交流规则制定，需要依赖于抽象；层与层之前进行数据流转的时候，使用ViewModel解偶数据依赖，另外对于View层的事件和数据源也可以进一步拆分，
+3.对于业务实体，必须是纯粹的，没有任何业务代码，如POJO对象、DataStore(Local，Network)。
+4. VIPER架构每一层是独立的，因此需要一定绑定器使用DI的方式来将他们动态地结合在一起，完成初始化整个模块，配置VIPER之间的关系，并对外声明模块需要的依赖，让外部执行注入。
+5. 每一个业务块的VIPER结构是一个独立模块（带UI模块和不带UI的模块），UI模块是基于事件触发的，他们之间可以使用Router进行跳转；非UI模块的访问可以使用service，Service由业务流程在执行路由时注入到Builder，再由Buidler注入到Interactor。也可只注入一个Service Router，运行时通过这个Service Router懒加载需要的Service，相当于注入了一个提供Router功能的Service。
+6. 对于传统的mvc的项目进行重构时，我们如何快速的映射到viper：
+* 整理UIController里面的代码
+* 将viper的职责，先将代码分拆，然后再挪到VIPER各个角色中去, 各个层直接调用
+* 最后抽象出各个层的接口，完成解藕
+
+
+
+
+
+
+
+
